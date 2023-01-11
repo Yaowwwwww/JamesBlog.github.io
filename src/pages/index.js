@@ -54,6 +54,7 @@ const Card = (post) => (
     <Link to={post.fields.slug} itemProp="url">
         <div className={card}>
             <article className="post-list-item" itemScope itemType="http://schema.org/Article">
+                <img src={post.frontmatter.image}/>
                 <header>
                     <h1 className="text-3xl font-bold">
                         <span itemProp="headline">{post.frontmatter.title}</span>
@@ -73,7 +74,7 @@ const Card = (post) => (
     </Link>
 )
 
-const card = "p-6 max-w-64 mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4"
+const card = "relative p-6 max-w-64 mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4"
 
 export default BlogIndex
 
@@ -101,6 +102,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          image
         }
       }
     }
