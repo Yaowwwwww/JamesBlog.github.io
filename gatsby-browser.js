@@ -1,3 +1,4 @@
+import './src/styles/global.css'
 // custom typefaces
 import "@fontsource/montserrat/variable.css"
 import "@fontsource/merriweather"

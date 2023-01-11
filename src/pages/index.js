@@ -24,6 +24,9 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+        <h1 className="text-3xl font-bold underline">
+            Hello world!
+        </h1>
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
