@@ -1,20 +1,20 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Card from "../components/card";
 
 const BlogTagPostsTemplate = ({ location, data, pageContext }) => {
   const posts = data.allMarkdownRemark.nodes;
-  console.log(posts);
   return (
     <Layout location={location}>
-      <h1 class="title has-text-black">Posts for tag: <span class="tag is-large is-info">{pageContext.targetTag}</span>
+      <h1 className={"btn gap-2 text-3xl font-bold my-3"}>
+        {pageContext.targetTag}
+        <div className="badge bg-green-soto">{posts.length}</div>
       </h1>
-      <p class="subtitle">{posts.length + " posts"}</p>
-      <hr />
+      <hr className={"my-3"}/>
       {posts.map(post => (
-            <Card {...post} />
+        <Card {...post} />
       ))}
     </Layout>
   );
