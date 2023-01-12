@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
+import Card from "../components/card";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -25,33 +26,6 @@ const BlogIndex = ({ data, location }) => {
   );
 };
 
-const Card = (post) => (
-  <Link to={post.fields.slug} itemProp="url">
-    <article className={"flex flex-col relative p-6 bg-white rounded-xl shadow-lg"} itemScope
-             itemType="https://schema.org/Article">
-      <div>
-        <img src={post.frontmatter.image} className={"rounded-xl"} alt={""} />
-      </div>
-      <div className={""}>
-        <header className={"my-3 font-sans text-2xl font-bold"}>
-          <h1>
-            <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
-          </h1>
-        </header>
-        <section className={"text-gray-500"}>
-          <p className={"truncate..."}
-             dangerouslySetInnerHTML={{
-               __html: post.frontmatter.description || post.excerpt
-             }}
-             itemProp="description"
-          />
-          <small>{post.frontmatter.date}</small>
-        </section>
-      </div>
-    </article>
-  </Link>
-);
-
 
 export default BlogIndex;
 
@@ -60,7 +34,7 @@ export default BlogIndex;
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="All posts" />;
+export const Head = () => <Seo title="Recent Posts" />;
 
 export const pageQuery = graphql`
   {
