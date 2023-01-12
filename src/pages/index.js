@@ -26,12 +26,12 @@ const BlogIndex = ({ data, location }) => {
 
 const Card = (post) => (
   <Link to={post.fields.slug} itemProp="url">
-    <article className={"flex flex-col items-center relative p-6 bg-white rounded-xl shadow-lg"} itemScope
+    <article className={"flex flex-col relative p-6 bg-white rounded-xl shadow-lg"} itemScope
              itemType="https://schema.org/Article">
       <div>
         <img src={post.frontmatter.image} className={"rounded-xl"} alt={""} />
       </div>
-      <div>
+      <div className={""}>
         <header className={"my-3 font-sans text-2xl font-bold"}>
           <h1>
             <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
