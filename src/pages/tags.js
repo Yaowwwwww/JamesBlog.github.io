@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 
-import SEO from "../components/seo";
-import Layout from "../components/Layout";
+import Seo from "../components/seo";
+import Layout from "../components/layout";
 
 const Tags = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes;
@@ -22,7 +22,6 @@ const Tags = ({ data, location }) => {
   tagPair.sort((left, right) => right[1] - left[1]);
   return (
     <Layout location={location} title={"SOTO | Tags"}>
-      <SEO title="Tags" />
       <h1 className={"text-3xl font-bold my-3"}>
         Tags | 标签
       </h1>
@@ -31,7 +30,7 @@ const Tags = ({ data, location }) => {
         {tagPair.map(([tag, count]) => {
           return (
             <div>
-              <Link to={"tag/" + tag}>{tag}</Link>
+              <Link to={"/tag/" + tag}>{tag}</Link>
               <span>{count}</span>
             </div>
           );
@@ -40,6 +39,8 @@ const Tags = ({ data, location }) => {
     </Layout>
   );
 };
+
+export const Head = () => <Seo title="Tags" />;
 
 export default Tags;
 

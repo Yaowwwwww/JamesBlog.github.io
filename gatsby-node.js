@@ -4,17 +4,17 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
 
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 // Define the template for blog post
-const blogPost = path.resolve(`./src/templates/blog-post.js`)
+const blogPost = path.resolve(`./src/templates/blog-post.js`);
 
 /**
- * @type {import('gatsby').GatsbyNode['createPages']}
+ * @type {import("gatsby").GatsbyNode["createPages"]}
  */
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
@@ -28,17 +28,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  `)
+  `);
 
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
       result.errors
-    )
-    return
+    );
+    return;
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = result.data.allMarkdownRemark.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -46,8 +46,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+      const previousPostId = index === 0 ? null : posts[index - 1].id;
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
 
       createPage({
         path: post.fields.slug,
@@ -55,35 +55,75 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: {
           id: post.id,
           previousPostId,
-          nextPostId,
-        },
-      })
-    })
+          nextPostId
+        }
+      });
+    });
   }
-}
+
+  const tagPosts = path.resolve(`./src/templates/tag-posts.js`);
+  const tagPostResult = await graphql(
+    `
+    {
+      allMarkdownRemark {
+        nodes {
+          frontmatter {
+            tags
+          }
+        }
+      }
+    }
+    `
+  );
+
+  // Create tag pages.
+  if (tagPostResult.errors) {
+    throw tagPostResult.errors;
+  }
+
+  // Create blog posts pages.
+  const nodes = tagPostResult.data.allMarkdownRemark.nodes;
+
+  const tagSet = new Set();
+
+  nodes.forEach(node => {
+    if (node.frontmatter.tags !== null) {
+      node.frontmatter.tags.forEach(tag => tagSet.add(tag));
+    }
+  });
+
+
+  tagSet.forEach(tag => createPage({
+    path: "tag/" + tag,
+    component: tagPosts,
+    context: {
+      targetTag: tag
+    }
+  }));
+};
 
 /**
- * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ * @type {import("gatsby").GatsbyNode["onCreateNode"]}
  */
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
 
     createNodeField({
       name: `slug`,
       node,
-      value,
-    })
+      value
+    });
   }
-}
+};
 
 /**
- * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ * @type {import("gatsby").GatsbyNode["createSchemaCustomization"]}
  */
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+  const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object
   // This way those will always be defined even if removed from gatsby-config.js
@@ -123,5 +163,5 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Fields {
       slug: String
     }
-  `)
-}
+  `);
+};
