@@ -14,9 +14,13 @@ const BlogPostTemplate = ({
   return (
     <Layout location={location} title={siteTitle}>
       <article
-        className="blog-post"
+        className="
+        prose md:prose-lg lg:prose-xl
+        prose-img:rounded-xl
+        prose-a:text-blue-500 hover:prose-a:text-blue-400
+        "
         itemScope
-        itemType="http://schema.org/Article"
+        itemType="https://schema.org/Article"
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
@@ -89,7 +93,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
         description
       }
     }
