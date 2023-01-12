@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-const Header = ({ title }) => (
+const Header = () => (
   <div className={"flex flex-row p-4 lg:w-3/4 mx-auto justify-between"}>
     <Link className={"flex flex-row space-x-3"} to={"/"}>
       <StaticImage
@@ -14,7 +14,7 @@ const Header = ({ title }) => (
       ></StaticImage>
       <div>
         <h1 className="text-2xl font-bold">
-          {title}
+          SOTO
         </h1>
       </div>
     </Link>
