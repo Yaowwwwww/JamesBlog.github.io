@@ -21,9 +21,9 @@ const Layout = ({ location, title, children }) => {
   }
 
   return (
-    <div className="container mx-auto w-1/2" data-is-root-path={isRootPath}>
+    <div className="bg-gray-100" data-is-root-path={isRootPath}>
       <header className="global-header">{header}</header>
-      <main>{children}</main>
+      <main className={"w-11/12 lg:w-1/2 mx-auto"}>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}

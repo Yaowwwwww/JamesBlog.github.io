@@ -11,7 +11,6 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
       <ol className={"flex flex-col space-y-6"} style={{ listStyle: `none` }}>
         {posts.map(post => {
           return (
