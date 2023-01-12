@@ -2,10 +2,11 @@
   SOTO-BLOG
 </h1>
 <p align="center">
-    Based on Gatsby
+    Based on Gatsby<br/>
+    A personal blog project when learning front end (html, css, javascript, reactjs)
 </p>
 
-A personal blog project when learning front end (html, css, javascript, reactjs)
+
 
 ## Based On
 
@@ -21,5 +22,6 @@ A personal blog project when learning front end (html, css, javascript, reactjs)
   - [x] Header & Footer
 - [x] 加入 frontmatter cover
 - [x] markup 排版使用 tailwindcss typography
-- [ ] 增加 Tags 标签功能
+- [x] 增加 Tags 标签功能
+- [ ] 修改 Tags 页样式
 - [ ] 增加 Archives 页
