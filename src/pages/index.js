@@ -27,27 +27,28 @@ const BlogIndex = ({ data, location }) => {
 
 const Card = (post) => (
   <Link to={post.fields.slug} itemProp="url">
-    <div className={"flex items-center relative p-6 bg-white rounded-xl shadow-lg"}>
-      <article itemScope itemType="https://schema.org/Article">
+    <article className={"flex flex-col items-center relative p-6 bg-white rounded-xl shadow-lg"} itemScope
+             itemType="https://schema.org/Article">
+      <div>
         <img src={post.frontmatter.image} className={"rounded-xl"} alt={""} />
-        <div className={"relative bottom-0"}>
-          <header>
-            <h1 className="text-2xl font-bold">
-              <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
-            </h1>
-            <small>{post.frontmatter.date}</small>
-          </header>
-          <section className={"h-10"}>
-            <p className={"truncate..."}
-               dangerouslySetInnerHTML={{
-                 __html: post.frontmatter.description || post.excerpt
-               }}
-               itemProp="description"
-            />
-          </section>
-        </div>
-      </article>
-    </div>
+      </div>
+      <div>
+        <header className={"my-3 font-sans text-2xl font-bold"}>
+          <h1>
+            <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
+          </h1>
+        </header>
+        <section className={"text-gray-500"}>
+          <p className={"truncate..."}
+             dangerouslySetInnerHTML={{
+               __html: post.frontmatter.description || post.excerpt
+             }}
+             itemProp="description"
+          />
+          <small>{post.frontmatter.date}</small>
+        </section>
+      </div>
+    </article>
   </Link>
 );
 
