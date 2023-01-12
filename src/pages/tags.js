@@ -26,13 +26,13 @@ const Tags = ({ data, location }) => {
         Tags | 标签
       </h1>
       <hr />
-      <div>
+      <div className="grid grid-flow-col auto-cols-max gap-5 m-4">
         {tagPair.map(([tag, count]) => {
           return (
-            <div>
-              <Link to={"/tag/" + tag}>{tag}</Link>
-              <span>{count}</span>
-            </div>
+            <Link className={"btn gap-2 text-lg font-bold"} to={"/tag/" + tag}>
+              {tag}
+              <div className="badge bg-green-soto">{count}</div>
+            </Link>
           );
         })}
       </div>
