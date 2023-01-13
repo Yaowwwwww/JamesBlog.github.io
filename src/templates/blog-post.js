@@ -22,7 +22,7 @@ const BlogPostTemplate = ({
             <span className={"mx-2"}>{post.frontmatter.date}</span>
             {post.frontmatter.tags ? (
               post.frontmatter.tags.map(tag=>(
-                  <Link className={"btn btn-ghost btn-sm mx-1"} to={`/tags/${tag.toLowerCase()}`}>
+                  <Link className={"btn btn-ghost btn-sm mx-1"} to={`/tags/${tag}`}>
                     {tag}
                   </Link>
               ))

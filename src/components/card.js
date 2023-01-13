@@ -18,6 +18,13 @@ const Card = (post) => (
              itemProp="description"
           />
           <small>{post.frontmatter.date}</small>
+          {post.frontmatter.tags ? (
+            post.frontmatter.tags.map(tag=>(
+              <Link className={"btn btn-ghost btn-xs mx-1"} to={`/tags/${tag}`}>
+                {tag}
+              </Link>
+            ))
+          ):null}
         </section>
       </div>
     </article>
