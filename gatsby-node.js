@@ -25,6 +25,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           fields {
             slug
           }
+          frontmatter {
+            slug
+          }
         }
       }
     }
@@ -47,10 +50,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     posts.forEach(post => {
       createPage({
-        path: post.fields.slug,
+        path: post.frontmatter.slug ? post.frontmatter.slug : post.fields.slug,
         component: blogPost,
         context: {
-          id: post.id,
+          id: post.id
         }
       });
     });
@@ -153,6 +156,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: Date @dateformat
       image: String
       tags: [String]
+      slug: String
     }
 
     type Fields {

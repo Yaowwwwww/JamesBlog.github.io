@@ -37,7 +37,7 @@ const Archive = ({ data, location }) => {
                   <span className={"text-3xl font-bold text-primary"}>{month}</span>
                   {timeMap.get(year).get(month).map(post => {
                     return (
-                      <Link className={"text-lg"} to={post.fields.slug}>
+                      <Link className={"text-lg"} to={post.frontmatter.slug ? post.frontmatter.slug : post.fields.slug}>
                         <span className={"text-base-300 mr-3"}>{post.frontmatter.date}</span>
                         <span className={"text-primary-content/75"}>{post.frontmatter.title}</span>
                       </Link>
@@ -72,6 +72,7 @@ export const pageQuery = graphql`
         frontmatter {
           date(formatString: "YYYY-MM-DD")
           title
+          slug
         }
       }
       totalCount
