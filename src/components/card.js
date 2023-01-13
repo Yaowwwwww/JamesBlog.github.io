@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import * as React from "react";
 
 const Card = (post) => (
-  <Link to={post.frontmatter.slug ? post.frontmatter.slug : post.fields.slug} itemProp="url">
+  <Link to={post.frontmatter.slug ? "/" + post.frontmatter.slug : post.fields.slug} itemProp="url">
     <article className={"flex flex-col relative p-6 bg-base-100 rounded-xl shadow-lg"} itemScope
              itemType="https://schema.org/Article">
       <div>
