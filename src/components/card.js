@@ -3,18 +3,14 @@ import * as React from "react";
 
 const Card = (post) => (
   <Link to={post.frontmatter.slug ? "/" + post.frontmatter.slug : post.fields.slug} itemProp="url">
-    <article className={"flex flex-col relative p-6 bg-base-100 rounded-xl shadow-lg"} itemScope
+    <article className={"card card-compact bg-base-100 shadow-lg hover:bg-base-200 hover:p-1"} itemScope
              itemType="https://schema.org/Article">
-      <div>
-        <img src={post.frontmatter.image} className={"rounded-xl"} alt={""} />
-      </div>
-      <div className={""}>
-        <header className={"my-3 font-sans text-2xl font-bold"}>
-          <h1>
-            <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
-          </h1>
-        </header>
-        <section className={"text-gray-500"}>
+      <figure>
+        <img src={post.frontmatter.image} className={""} alt={""} />
+      </figure>
+      <div className={"card-body"}>
+        <h2 className={"card-title"} itemProp="card-title">{post.frontmatter.title || post.fields.slug}</h2>
+        <section className={"text-zinc-500"}>
           <p className={"truncate..."}
              dangerouslySetInnerHTML={{
                __html: post.frontmatter.description || post.excerpt

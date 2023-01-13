@@ -26,7 +26,6 @@ const Archive = ({ data, location }) => {
       <h1 className={"text-3xl font-bold my-3"}>
         Archives
       </h1>
-      <hr className={"my-3"} />
       {Array.from(timeMap.keys()).map(year => {
         return (
           <div className="flex flex-col w-full border-opacity-50">
@@ -39,7 +38,7 @@ const Archive = ({ data, location }) => {
                     return (
                       <Link className={"text-lg"}
                             to={post.frontmatter.slug ? "/" + post.frontmatter.slug : post.fields.slug}>
-                        <span className={"text-base-300 mr-3"}>{post.frontmatter.date}</span>
+                        <span className={"text-primary-content/25 mr-3"}>{post.frontmatter.date}</span>
                         <span className={"text-primary-content/75"}>{post.frontmatter.title}</span>
                       </Link>
                     );
