@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
@@ -27,6 +27,7 @@ const BlogIndex = ({ data, location }) => {
           );
         })}
       </ol>
+      <Link className="btn btn-wide btn-primary my-5" to={"/archive"}>MORE</Link>
     </Layout>
   );
 };
@@ -51,7 +52,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
         filter: {frontmatter: {draft: {ne: true}}}
         sort: {frontmatter: {date: DESC}}
-        limit: 1000
+        limit: 10
     ) {
       nodes {
         excerpt

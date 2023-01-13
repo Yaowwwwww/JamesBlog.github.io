@@ -29,5 +29,5 @@
 - [ ] 增加 Table of contents
 - [x] 增加深色模式
 - [x] slug 格式
-- [ ] 分页
+- [ ] ~~分页~~ 首页直接跳转 Archive
 - [x] 草稿 frontmatter draft
