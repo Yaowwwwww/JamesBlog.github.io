@@ -36,7 +36,7 @@ const Archive = ({ data, location }) => {
                   <span className={"text-3xl font-bold text-primary"}>{month}</span>
                   {timeMap.get(year).get(month).map(post => {
                     return (
-                      <Link className={"text-lg"}
+                      <Link className={"text-lg hover:text-xl"}
                             to={post.frontmatter.slug ? "/" + post.frontmatter.slug : post.fields.slug}>
                         <span className={"text-primary-content/25 mr-3"}>{post.frontmatter.date}</span>
                         <span className={"text-primary-content/75"}>{post.frontmatter.title}</span>
