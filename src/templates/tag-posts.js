@@ -31,7 +31,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(filter: {frontmatter: {tags: {eq: $targetTag}}}, sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+    filter: {frontmatter: {tags: {eq: $targetTag}, draft: {ne: true}}}, 
+    sort: { frontmatter: { date: DESC } }
+    ) {
       nodes {
         excerpt(truncate: true)
         fields {
