@@ -1,14 +1,12 @@
 /** @type {import("tailwindcss").Config} */
 module.exports = {
+  darkMode: ['class', '[data-theme="dark"]'],
   content: [
     "./src/pages/**/*.{js,jsx,ts,tsx}",
     "./src/components/**/*.{js,jsx,ts,tsx}",
     "./src/templates/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    colors: {
-      "green-soto": "#ABB581"
-    },
     extend: {}
   },
   plugins: [
@@ -21,7 +19,7 @@ module.exports = {
       {
         soto_theme: {
 
-          "primary": "#65a30d",
+          "primary": "#ABB581",
 
           "secondary": "#84cc16",
 
@@ -41,7 +39,6 @@ module.exports = {
         },
       },
       "dark",
-      "cupcake"
     ],
     base: false,
     utils: true,

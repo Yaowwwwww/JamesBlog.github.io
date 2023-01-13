@@ -23,15 +23,15 @@ const Tags = ({ data, location }) => {
   return (
     <Layout location={location} title={"SOTO | Tags"}>
       <h1 className={"text-3xl font-bold my-3"}>
-        Tags | 标签
+        Tags
       </h1>
       <hr className={"my-3"}/>
       <div className="grid grid-flow-col auto-cols-max gap-5">
         {tagPair.map(([tag, count]) => {
           return (
-            <Link className={"btn gap-2 text-lg font-bold"} to={"/tag/" + tag}>
+            <Link className={"btn btn-outline btn-primary gap-2 text-lg font-bold"} to={"/tag/" + tag}>
               {tag}
-              <div className="badge bg-green-soto">{count}</div>
+              <div className="badge">{count}</div>
             </Link>
           );
         })}
