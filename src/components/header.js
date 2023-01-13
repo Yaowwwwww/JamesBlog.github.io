@@ -21,7 +21,7 @@ const Header = () => (
     <div className="flex-none">
       <ul className="menu menu-horizontal px-1">
         <li>
-          <Link to={"/archives"}>Archives</Link>
+          <Link to={"/archive"}>Archive</Link>
         </li>
         <li>
           <Link to={"/tags"}>Tags</Link>
