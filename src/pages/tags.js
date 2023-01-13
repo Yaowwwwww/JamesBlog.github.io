@@ -29,7 +29,7 @@ const Tags = ({ data, location }) => {
       <div className="grid grid-flow-col auto-cols-max gap-5">
         {tagPair.map(([tag, count]) => {
           return (
-            <Link className={"btn btn-outline btn-primary gap-2 text-lg font-bold"} to={"/tag/" + tag}>
+            <Link className={"btn btn-outline btn-primary gap-2 text-lg font-bold"} to={"/tags/" + tag}>
               {tag}
               <div className="badge">{count}</div>
             </Link>
