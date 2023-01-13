@@ -26,7 +26,7 @@ const Tags = ({ data, location }) => {
         Tags
       </h1>
       <hr className={"my-3"}/>
-      <div className="grid grid-flow-col auto-cols-max gap-5">
+      <div className="flex flex-wrap gap-4">
         {tagPair.map(([tag, count]) => {
           return (
             <Link className={"btn btn-outline btn-primary gap-2 text-lg font-bold"} to={"/tags/" + tag}>
