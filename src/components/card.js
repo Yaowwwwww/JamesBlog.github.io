@@ -3,7 +3,7 @@ import * as React from "react";
 
 const Card = (post) => (
   <Link to={post.fields.slug} itemProp="url">
-    <article className={"flex flex-col relative p-6 bg-white rounded-xl shadow-lg"} itemScope
+    <article className={"flex flex-col relative p-6 bg-base-100 rounded-xl shadow-lg"} itemScope
              itemType="https://schema.org/Article">
       <div>
         <img src={post.frontmatter.image} className={"rounded-xl"} alt={""} />
