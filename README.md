@@ -24,9 +24,10 @@
 - [x] markup 排版使用 tailwindcss typography
 - [x] 增加 Tags 标签功能
 - [x] 修改 Tags 页样式
-- [ ] 增加 Archives 页
+- [x] 增加 Archive 页
 - [ ] 增加卡片点击悬浮效果
 - [ ] 增加 Table of contents
 - [x] 增加深色模式
 - [x] slug 格式
 - [ ] 分页
+- [ ] 草稿 frontmatter draft
