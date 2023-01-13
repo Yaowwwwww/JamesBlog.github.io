@@ -21,15 +21,31 @@ const BlogPostTemplate = ({
           <p className={"text-md text-gray-500 my-3"}>
             <span className={"mx-2"}>{post.frontmatter.date}</span>
             {post.frontmatter.tags ? (
-              post.frontmatter.tags.map(tag=>(
-                  <Link className={"btn btn-ghost btn-sm mx-1"} to={`/tags/${tag}`}>
-                    {tag}
-                  </Link>
+              post.frontmatter.tags.map(tag => (
+                <Link className={"btn btn-ghost btn-sm mx-1"} to={`/tags/${tag}`}>
+                  {tag}
+                </Link>
               ))
-            ):null}
+            ) : null}
           </p>
-          {(post.frontmatter.image!==null && post.frontmatter.image!=="")?
-            (<img className={"rounded-xl my-3"} src={post.frontmatter.image} alt={"cover"} />):null}
+          {(post.frontmatter.image !== null && post.frontmatter.image !== "") ?
+            (<img className={"rounded-xl my-3"} src={post.frontmatter.image} alt={"cover"} />) : null}
+          {post.tableOfContents ? (
+            <div className="collapse border border-base-300 bg-base-100 rounded-box my-3">
+              <input type="checkbox" />
+              <div className="collapse-title text-lg font-medium text-center">
+                TOC | 目录
+              </div>
+              <div className="collapse-content">
+                <div
+                  className=" prose md:prose-lg lg:prose-xl"
+                  dangerouslySetInnerHTML={{
+                    __html: post.tableOfContents
+                  }}
+                />
+              </div>
+            </div>
+          ) : null}
         </header>
         <section
           className="
@@ -68,6 +84,7 @@ export const pageQuery = graphql`
     }
     markdownRemark(id: { eq: $id }) {
       id
+      tableOfContents
       excerpt(truncate: true)
       html
       frontmatter {
