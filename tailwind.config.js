@@ -18,27 +18,32 @@ module.exports = {
     themes: [
       {
         soto_theme: {
-
           "primary": "#ABB581",
-
-          "secondary": "#84cc16",
-
-          "accent": "#f5f5f4",
-
+          "secondary": "#5D6833",
+          "accent": "#6F90B5",
           "neutral": "#3D4451",
-
           "base-100": "#FFFFFF",
-
           "info": "#3ABFF8",
-
           "success": "#36D399",
-
           "warning": "#FBBD23",
-
           "error": "#F87272",
         },
       },
-      "dark",
+      {
+        soto_theme_dark: {
+          ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+          "primary": "#ABB581",
+          "secondary": "#5D6833",
+          "accent": "#6F90B5",
+          "neutral": "#191D24",
+          "base-100": "#2A303C",
+          "info": "#3ABFF8",
+          "success": "#36D399",
+          "warning": "#FBBD23",
+          "error": "#F87272",
+        },
+      },
+      "soto_theme_dark",
     ],
     base: false,
     utils: true,

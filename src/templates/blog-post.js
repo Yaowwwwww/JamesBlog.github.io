@@ -28,7 +28,8 @@ const BlogPostTemplate = ({
               ))
             ):null}
           </p>
-          <img className={"rounded-xl my-3"} src={post.frontmatter.image} alt={"cover"} />
+          {(post.frontmatter.image!==null && post.frontmatter.image!=="")?
+            (<img className={"rounded-xl my-3"} src={post.frontmatter.image} alt={"cover"} />):null}
         </header>
         <section
           className="

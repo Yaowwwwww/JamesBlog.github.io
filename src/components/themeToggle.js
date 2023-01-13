@@ -6,8 +6,8 @@ const ThemeToggle = () => {
       <input type="checkbox"
              onChange={e =>
                e.target.checked ?
-                 document.documentElement.setAttribute("data-theme", "dark") :
-                 document.documentElement.removeAttribute("data-theme")
+                 document.documentElement.setAttribute("data-theme", "soto_theme_dark") :
+                 document.documentElement.setAttribute("data-theme","soto_theme")
              }
       />
       <svg className="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
