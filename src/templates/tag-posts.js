@@ -13,9 +13,9 @@ const BlogTagPostsTemplate = ({ location, data, pageContext }) => {
         <div className="badge bg-green-soto">{posts.length}</div>
       </h1>
       <hr className={"my-3"} />
-      {posts.map(post => (
-        <Card {...post} />
-      ))}
+      <ol className={"flex flex-col space-y-6"} style={{ listStyle: `none` }}>
+        {posts.map(post => <li><Card {...post} /></li>)}
+      </ol>
     </Layout>
   );
 };
