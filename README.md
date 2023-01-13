@@ -23,8 +23,10 @@
 - [x] 加入 frontmatter cover
 - [x] markup 排版使用 tailwindcss typography
 - [x] 增加 Tags 标签功能
-- [ ] 修改 Tags 页样式
+- [x] 修改 Tags 页样式
 - [ ] 增加 Archives 页
 - [ ] 增加卡片点击悬浮效果
 - [ ] 增加 Table of contents
-- [ ] 增加深色模式
+- [x] 增加深色模式
+- [ ] slug 格式
+- 
