@@ -1,5 +1,4 @@
 import * as React from "react";
-import { StaticImage } from "gatsby-plugin-image";
 
 const Bio = () => (
   <div className="my-5">

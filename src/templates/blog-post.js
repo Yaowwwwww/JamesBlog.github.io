@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -18,7 +18,16 @@ const BlogPostTemplate = ({
       >
         <header>
           <h1 className={"text-4xl font-bold my-3"} itemProp="headline">{post.frontmatter.title}</h1>
-          <p className={"text-md text-gray-500 my-3"}>{post.frontmatter.date}</p>
+          <p className={"text-md text-gray-500 my-3"}>
+            <span className={"mx-2"}>{post.frontmatter.date}</span>
+            {post.frontmatter.tags ? (
+              post.frontmatter.tags.map(tag=>(
+                  <Link className={"btn btn-accent btn-xs mx-1"} to={`/tags/${tag.toLowerCase()}`}>
+                    {tag}
+                  </Link>
+              ))
+            ):null}
+          </p>
           <img className={"rounded-xl my-3"} src={post.frontmatter.image} alt={"cover"} />
         </header>
         <section
@@ -30,7 +39,7 @@ const BlogPostTemplate = ({
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <hr />
+        <hr className={"my-3"} />
       </article>
     </Layout>
   );
@@ -50,8 +59,6 @@ export default BlogPostTemplate;
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
-    $previousPostId: String
-    $nextPostId: String
   ) {
     site {
       siteMetadata {
@@ -60,29 +67,14 @@ export const pageQuery = graphql`
     }
     markdownRemark(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(truncate: true)
       html
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
         description
         image
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
+        tags
       }
     }
   }
