@@ -9,6 +9,11 @@ import Card from "../components/card";
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;
+  if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.setAttribute("data-mode", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-mode");
+  }
 
   return (
     <Layout location={location} title={siteTitle}>

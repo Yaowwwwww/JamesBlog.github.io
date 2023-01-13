@@ -7,7 +7,7 @@ const Layout = ({ location, children }) => {
   const isRootPath = location.pathname === rootPath
 
   return (
-    <div className="bg-gray-100" data-is-root-path={isRootPath}>
+    <div className="bg-base-100" data-is-root-path={isRootPath}>
       <Header/>
       <main className={"w-11/12 lg:w-1/2 mx-auto"}>{children}</main>
       <Footer/>
