@@ -9,4 +9,4 @@ import "@fontsource/merriweather"
 
 // Highlighting for code blocks
 // import "prismjs/themes/prism.css"
-require("prismjs/themes/prism-okaidia.css")
+import "prismjs/themes/prism-tomorrow.css"
