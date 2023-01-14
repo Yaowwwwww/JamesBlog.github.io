@@ -16,16 +16,13 @@ const Seo = ({ description, title, children }) => {
           siteMetadata {
             title
             description
-            social {
-              twitter
-            }
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
   return (

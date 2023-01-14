@@ -46,7 +46,6 @@ export const pageQuery = graphql`
           tags
           image
           slug
-          tags
         }
       }
     }

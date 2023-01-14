@@ -10,15 +10,8 @@
 module.exports = {
   siteMetadata: {
     title: `SOTO`,
-    author: {
-      name: `SOTO`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    description: `SOTO-BLOG: some stuff that might be interesting`,
+    siteUrl: `https://zzhgo.com/`,
   },
   plugins: [
     'gatsby-plugin-postcss',
@@ -28,6 +21,7 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+        ignore: [`**/Templates`],
       },
     },
     {
@@ -83,14 +77,17 @@ module.exports = {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  url: site.siteMetadata.siteUrl + (node.frontmatter.slug?node.frontmatter.slug:node.fields.slug),
+                  guid: site.siteMetadata.siteUrl + (node.frontmatter.slug?node.frontmatter.slug:node.fields.slug),
                   custom_elements: [{ "content:encoded": node.html }],
                 })
               })
             },
             query: `{
-              allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+              allMarkdownRemark(
+                filter: {frontmatter: {draft: {ne: true}}}
+                sort: {frontmatter: {date: DESC}}
+              ) {
                 nodes {
                   excerpt
                   html
@@ -100,12 +97,13 @@ module.exports = {
                   frontmatter {
                     title
                     date
+                    slug
                   }
                 }
               }
             }`,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "SOTO-BLOG",
           },
         ],
       },
@@ -113,15 +111,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `Gatsby`,
+        name: `SOTO-BLOG`,
+        short_name: `SOTO`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/android-chrome-512x512.png`, // This path is relative to the root of the site.
       },
     },
   ],
