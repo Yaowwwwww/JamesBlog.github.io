@@ -1,6 +1,6 @@
 ---
 title: "PT站使用"
-date: 2022-12-31T11:02:00+08:00
+date: 2022-12-31T11:02:00
 tags: [TV]
 image: "https://pic.mcac.cc/202212311135000.png"
 ---

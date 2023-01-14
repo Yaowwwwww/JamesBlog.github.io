@@ -22,7 +22,7 @@ const BlogIndex = ({ data, location }) => {
           );
         })}
       </ol>
-      <Link className="btn btn-wide btn-primary my-5" to={"/archive"}>MORE</Link>
+      <Link className="btn btn-wide btn-primary my-5 flex mx-auto" to={"/archive"}>MORE</Link>
     </Layout>
   );
 };

@@ -49,9 +49,10 @@ const BlogPostTemplate = ({
         </header>
         <section
           className="
-          prose md:prose-lg lg:prose-xl
+          prose md:prose-md lg:prose-lg
           prose-img:rounded-xl
           prose-a:text-blue-500 hover:prose-a:text-blue-400
+          prose-code:mockup-code
           "
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
