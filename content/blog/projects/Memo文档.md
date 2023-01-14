@@ -6,9 +6,7 @@ categories: [Coding]
 date: 2021-10-28 17:29:00
 ---
 
-# Memo
-
-Memo用于随时记录，记录生活中的某一刻，记录今天的心情，或是记录看过的一部电影，一本书，留下自己此时的感想，并在自己最爱的电影或书籍的二刷三刷后再次记录下时间和新的想法...
+Memo 用于随时记录，记录生活中的某一刻，记录今天的心情，或是记录看过的一部电影，一本书，留下自己此时的感想，并在自己最爱的电影或书籍的二刷三刷后再次记录下时间和新的想法...
 
 灵感来源于豆瓣，比起豆瓣的功能多出的个人需求为：需要一个简洁没有过量冗余信息的片单和书单记录软件，记录二刷，三刷的时间，以及想要随时记录每一天，并且在几年后回顾那年今日，留一些感动与感慨，让每一天都值得被纪念，故开发此软件。
 
@@ -20,21 +18,21 @@ Memo用于随时记录，记录生活中的某一刻，记录今天的心情，�
 
 ![iPad适配](https://pic.mcac.cc/soto-pictures/2021-12/4qk5Hd.jpg)
 
-Mac, iPad适配
+Mac, iPad 适配
 
 ## 简介
 
-### 主页面
+主页面
 
-主界面分为3个标签：主页，电影，书籍
+主界面分为 3 个标签：主页，电影，书籍
 
-##### 主页
+主页
 
 ![观](https://pic.mcac.cc/soto-pictures/2021-12/nU8yrj.jpg)
 
 ![记](https://pic.mcac.cc/soto-pictures/2021-12/4mxT4Y.jpg)
 
-##### 电影
+电影
 
 这里是你看过的电影片单，你可以随时看到你标记过的所有电影，以及在任何时候添加一个新的电影进入你的片单
 
@@ -44,10 +42,9 @@ Mac, iPad适配
 
 ![电影列表](https://pic.mcac.cc/soto-pictures/2021-12/somvRM.jpg)
 
+书籍
 
-##### 书籍
-
-类似电影，这里是你的书单，你可以添加你看过的书籍，并且记录第n次阅读的体验，相信每一次阅读，都会发现不少新东西
+类似电影，这里是你的书单，你可以添加你看过的书籍，并且记录第 n 次阅读的体验，相信每一次阅读，都会发现不少新东西
 
 ![书](https://pic.mcac.cc/soto-pictures/2021-12/v7ziTD.jpg)
 
@@ -63,17 +60,17 @@ Mac, iPad适配
 
 ## 架构以及实现
 
-源代码文件共25个
+源代码文件共 25 个
 
 主要分为三个部分：Controller Model Views
 
 ![源文件树](https://pic.mcac.cc/soto-pictures/2021-12/1Iyk57.jpg)
 
-#### Controller
+Controller
 
-一些静态函数，实现点击界面按钮后的某些后端反应以及后端用到的函数，如图像获取，日期格式化，Mark筛选等
+一些静态函数，实现点击界面按钮后的某些后端反应以及后端用到的函数，如图像获取，日期格式化，Mark 筛选等
 
-其中图片的读取使用了异步加载url的方式，如果url没有解析成功将不会显示图片
+其中图片的读取使用了异步加载 url 的方式，如果 url 没有解析成功将不会显示图片
 
 ```swift
 class ImageLoader: ObservableObject {
@@ -102,9 +99,9 @@ class ImageLoader: ObservableObject {
 
 ```
 
-#### Model
+Model
 
-主要用到的对象为Mark：
+主要用到的对象为 Mark：
 
 ```swift
 class Mark: Codable, Identifiable{
@@ -126,7 +123,7 @@ class Mark: Codable, Identifiable{
 
 Movie, Book 为电影和书籍的简介，不进行重复的展示
 
-他们遵循MarkableObject协议，用于在展示Mark详情时读取object后再作类型判断
+他们遵循 MarkableObject 协议，用于在展示 Mark 详情时读取 object 后再作类型判断
 
 ```swift
 struct Movie: Hashable, Codable, Identifiable, MarkableObject {
@@ -135,11 +132,11 @@ struct Movie: Hashable, Codable, Identifiable, MarkableObject {
 }
 ```
 
-ModelData负责数据存储的任务
+ModelData 负责数据存储的任务
 
-用到了自带的UserDefaults.standard存储数据
+用到了自带的 UserDefaults.standard 存储数据
 
-movies和books分别为电影和书籍数据集，内置在app中
+movies 和 books 分别为电影和书籍数据集，内置在 app 中
 
 ```swift
 final class ModelData: ObservableObject {
@@ -162,7 +159,7 @@ final class ModelData: ObservableObject {
 }
 ```
 
-ModelType为枚举类型，用于Mark类型判断
+ModelType 为枚举类型，用于 Mark 类型判断
 
 ```swift
 enum ModelType: String, Codable {
@@ -173,13 +170,13 @@ enum ModelType: String, Codable {
 }
 ```
 
-#### Views
+Views
 
-界面UI
+界面 UI
 
-用到了environmentObject来同步各个界面的数据
+用到了 environmentObject 来同步各个界面的数据
 
-父界面给子界面传递@Binding的变量，子界面拿到引用直接演示和修改，不会出现数据不同步的问题
+父界面给子界面传递@Binding 的变量，子界面拿到引用直接演示和修改，不会出现数据不同步的问题
 
 ```swift
 @main
@@ -194,46 +191,46 @@ struct MemoApp: App {
 }
 ```
 
-##### MainMenu
+MainMenu
 
-MarkList: Mark列表，即展示电影和书籍列表
+MarkList: Mark 列表，即展示电影和书籍列表
 
-使用NavigationLink，向子界面：MarkDetail传递mark的引用
+使用 NavigationLink，向子界面：MarkDetail 传递 mark 的引用
 
 ![](https://pic.mcac.cc/soto-pictures/2021-12/1qxgoz.png)
 
 HomeView: 主界面
 
-##### Mark
+Mark
 
-关于Mark的界面
+关于 Mark 的界面
 
-MarkDetail: 一个Mark的详情
+MarkDetail: 一个 Mark 的详情
 
-大部分子界面都如此UI一样，引入modelData的环境变量，承接上一级传下来的@Binding变量，实现数据的同步
+大部分子界面都如此 UI 一样，引入 modelData 的环境变量，承接上一级传下来的@Binding 变量，实现数据的同步
 
 ```swift
 @EnvironmentObject var modelData: ModelData
 @Binding var mark: Mark
 ```
 
-其中要进行object的解析，如果用户输入能索引本地数据集的一个条目上，将会展示此object的详情
+其中要进行 object 的解析，如果用户输入能索引本地数据集的一个条目上，将会展示此 object 的详情
 
 ![](https://pic.mcac.cc/soto-pictures/2021-12/oEbVAd.png)
 
-MarkAdd: Mark增加界面
+MarkAdd: Mark 增加界面
 
-MarkEdit: Mark修改界面
+MarkEdit: Mark 修改界面
 
 MarkToday: 标记今天界面
 
-这三个UI都用到了@State来实时同步Form表单中的信息
+这三个 UI 都用到了@State 来实时同步 Form 表单中的信息
 
-以至于用户输入能够及时的反应在变量上并且写入modelData
+以至于用户输入能够及时的反应在变量上并且写入 modelData
 
 ![](https://pic.mcac.cc/soto-pictures/2021-12/Lp7xQ3.png)
 
-#### Kit
+Kit
 
 其他组件
 

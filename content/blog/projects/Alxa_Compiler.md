@@ -6,13 +6,11 @@ ShowToc: true
 date: 2021-11-16 16:29:00
 ---
 
-
-
 ## Lexical analysis
 
 ### Before Code
 
-Requriement:  read `testfile.txt`, parse every char to word and print them. At the same time, memorize type, content and line number of  each word.
+Requriement: read `testfile.txt`, parse every char to word and print them. At the same time, memorize type, content and line number of each word.
 
 #### File reading
 
@@ -26,7 +24,7 @@ while ((s = bf.readLine()) != null) {
 
 #### Analyse
 
-When i get the key word, enter the next analyst. 
+When i get the key word, enter the next analyst.
 
 ```java
 while ((c = getChar()) != null) {
@@ -81,7 +79,7 @@ if (c == '<') {
 
 Digit: When I get a digit, it means I will scan a serial of some digits and turn them into a Word typify "INTCON".
 
-Letter: When I get a letter, it means I will scan a string about letter or digit. It maybe a "IDENFR" or "STRCON", which depends on whether it is in key map or not. 
+Letter: When I get a letter, it means I will scan a string about letter or digit. It maybe a "IDENFR" or "STRCON", which depends on whether it is in key map or not.
 
 #### Word
 
@@ -123,7 +121,7 @@ As for KeyWordMap, it is a HashMap, mapping the string of word and its type.
 
 #### File reading
 
-Read file by line is not convenient for preread and undo, so I read the file into a single String at first. 
+Read file by line is not convenient for preread and undo, so I read the file into a single String at first.
 
 The method is read by line, add `\n` after every line and scan every char. When I get `\n`, `lineNum++`
 
@@ -143,9 +141,9 @@ The method is read by line, add `\n` after every line and scan every char. When 
 
 About analyst, it is different from what before coding.
 
-First, I need analyze word one by one, so I add global variety `index` to memorize where is the pointer. 
+First, I need analyze word one by one, so I add global variety `index` to memorize where is the pointer.
 
-Besides, I met the situation that I need read one more or undo, so I  encapsulate the function `ungetChar` and `getChar`, which will be convenient for me to analyze. 
+Besides, I met the situation that I need read one more or undo, so I encapsulate the function `ungetChar` and `getChar`, which will be convenient for me to analyze.
 
 ```java
     private Character getChar() {
@@ -172,7 +170,7 @@ Besides, I met the situation that I need read one more or undo, so I  encapsulat
 
 ##### Slash
 
-1) `//` : When it comes to `\n` , stop.
+1. `//` : When it comes to `\n` , stop.
 
 ```java
 do {
@@ -184,7 +182,7 @@ do {
 } while (true);
 ```
 
-2) `/* */`: Get char until `*/` appears
+2. `/* */`: Get char until `*/` appears
 
 ```java
 do {
@@ -212,7 +210,7 @@ Requirement: Based on the words identified by the lexical analysis program, iden
 
 #### Data Reading
 
-Like the lexical analyst, I prepared function  `getWord` `getNextWord` and so on. At the same time, there is a global variety `(Word) curWord` to display which word it is when I read `ArrayList<Word> words ` from lexical analyst one by one.    
+Like the lexical analyst, I prepared function `getWord` `getNextWord` and so on. At the same time, there is a global variety `(Word) curWord` to display which word it is when I read `ArrayList<Word> words ` from lexical analyst one by one.
 
 My analyst tragedy is as follows:
 
@@ -242,7 +240,7 @@ To expression rule: I scan the whole expression first, which is implemented by f
 
 According to Grammatical Rules, code function for every term of rule.
 
-Main idea: read a word, check what it symbolize and enter the next analyzing function.  
+Main idea: read a word, check what it symbolize and enter the next analyzing function.
 
 For example:
 
@@ -276,7 +274,7 @@ private void analyseCompUnit() {
 }
 ```
 
-grammar is used for memorize output of lexical analyst and grammar analyst list. 
+grammar is used for memorize output of lexical analyst and grammar analyst list.
 
 #### left recursion
 
@@ -284,7 +282,7 @@ grammar is used for memorize output of lexical analyst and grammar analyst list.
 加减表达式 AddExp → MulExp | AddExp ('+' | '−') MulExp // 1.MulExp 2.+ 需覆盖 3.- 需覆盖
 ```
 
-Check if the exp has '+' or '-'. If it has, separate the exp to AddExp and  MulExp. Then analyze them separately. 
+Check if the exp has '+' or '-'. If it has, separate the exp to AddExp and MulExp. Then analyze them separately.
 
 ### After Code
 
@@ -298,13 +296,13 @@ to
 加减表达式 AddExp → MulExp | AddExp ('+' | '−') MulExp // 1.MulExp 2.+ 需覆盖 3.- 需覆盖
 ```
 
-Rewrite it like 
+Rewrite it like
 
 ```c
 AddExp → MulExp ('+' | '−') MulExp  ('+' | '−') MulExp ...
 ```
 
-Code like 
+Code like
 
 ```java
 private void analyseMulExp(ArrayList<Word> exp) {
@@ -324,7 +322,7 @@ Function `divideExp` is used for divide the whole exp passed by `getExp` or the 
 
 `divideExp`:
 
-In: orignal: `exp` stop symbol:  `symbol`
+In: orignal: `exp` stop symbol: `symbol`
 
 Out: List of divided exp and symbol.
 
@@ -409,7 +407,7 @@ public class Symbol {
 
 Type means the type of the symbol.
 
-IntType is an integer. If it's 0, the symbol is int. if it's 1, the symbol is int[],  if it's 2, the symbol is int[] []...
+IntType is an integer. If it's 0, the symbol is int. if it's 1, the symbol is int[], if it's 2, the symbol is int[] []...
 
 Content is its content.
 
@@ -417,7 +415,7 @@ Area is where is it.
 
 I create a HashMap of Symbols, memorizing symbols created in each area.
 
-When I enter a new area, area++. When I leave an area, area--, with the corresponding Symbols are destroyed. 
+When I enter a new area, area++. When I leave an area, area--, with the corresponding Symbols are destroyed.
 
 ```java
     private HashMap<Integer, Symbols> symbols = new HashMap<>();
@@ -456,7 +454,7 @@ public boolean isFormatIllegal() {
   return false;
 }
 
-private boolean isLegal(char c) {  
+private boolean isLegal(char c) {
     return c == 32 || c == 33 || (c >= 40 && c <= 126); //offical defination
 }
 ```
@@ -468,7 +466,7 @@ B: Every time I get an identity, check if there is the same symbol has been defi
 ```java
     private boolean hasSymbolInThisArea(Word word) {
         return symbols.get(area).hasSymbol(word);
-    } 
+    }
 ```
 
 C: Check all area. If the symbol has been defined. Functions are as the same.
@@ -484,7 +482,7 @@ C: Check all area. If the symbol has been defined. Functions are as the same.
     }
 ```
 
-##### **d e** 
+##### **d e**
 
 To check if the function parameters are matched, I memorize parameters of every function and when I met a function call, I will scan the function call parameters and match them. I prepare a function to do this. Finally I found I need to use recursive descent again, so I add the check procedure to the recursive descent of the grammatical analyst. Please check the `After Code/Error d and e`
 
@@ -494,7 +492,7 @@ There is a global variety `needReturn` used to display if the current function n
 
 ##### **h**
 
-Just check if it is a const. 
+Just check if it is a const.
 
 ```java
 if (isConst(word)) {
@@ -756,7 +754,7 @@ Function call: as follows
 
 #### Function call procedure
 
-First, before function call, there will be some parameters to be pushed into the stack. Each will be followed by a `RPARA` command, which memorize the address of the previous variety. 
+First, before function call, there will be some parameters to be pushed into the stack. Each will be followed by a `RPARA` command, which memorize the address of the previous variety.
 
 ```java
 case RPARA: {
@@ -771,7 +769,7 @@ case RPARA: {
 
 Second, function `CALL`.
 
-Memorize the eip, stack top address, and information about the function(In fact, they will be pushed into stack too). Then update the `varTable` and `eip`.  Ready for execute function. 
+Memorize the eip, stack top address, and information about the function(In fact, they will be pushed into stack too). Then update the `varTable` and `eip`. Ready for execute function.
 
 ```java
 case CALL: {
@@ -902,7 +900,7 @@ if (word.typeEquals("CONTINUETK")) {
     getWord();//continue
     codes.add(new PCode(CodeType.JMP, whileLabels.get(whileLabels.size() - 1).get("while")));
     ...
-} 
+}
 ```
 
 ### After Code
@@ -915,35 +913,35 @@ In Operation, `push()` means put value into the top of the stack. `pop()` means 
 
 ##### Common Type
 
-| CodeType    | Value1              | Value2             | Operation                               |
-| ----------- | ------------------- | ------------------ | --------------------------------------- |
-| LABEL       | Label_name          | Set  a label       |                                         |
-| VAR         | Ident_name          | Declare  a variety |                                         |
-| PUSH        | Ident_name/Digit    | push(value1)       |                                         |
-| POP         | Address             | Ident_name         | *value1 = value2                        |
-| JZ          | Label_name          |                    | Jump if stack top is zero               |
-| JNZ         | Label_name          |                    | Jump if stack top is not zero           |
-| JMP         | Label_name          |                    | Jump unconditionally                    |
-| MAIN        |                     |                    | Main function label                     |
-| FUNC        |                     |                    | Function label                          |
-| ENDFUNC     |                     |                    | End of function label                   |
-| PARA        | Ident_name          | Type               | Parameters                              |
-| RET         | Return value or not |                    | Function return                         |
-| CALL        | Function name       |                    | Function call                           |
-| RPARA       | Type                |                    | Get parameters ready for function call  |
-| GETINT      |                     |                    | Get a integer and put it into stack top |
-| PRINT       | String              | Para num           | Pop values and print.                   |
-| DIMVAR      | Ident_name          | Type               | Set dimension info for array variety    |
-| VALUE       | Ident_name          | Type               | Get the variety value                   |
-| ADDRESS     | Ident_name          | Type               | Get the variety address                 |
-| PLACEHOLDER |                     |                    | Push something to hold places           |
-| EXIT        |                     |                    | Exit                                    |
+| CodeType    | Value1              | Value2            | Operation                               |
+| ----------- | ------------------- | ----------------- | --------------------------------------- |
+| LABEL       | Label_name          | Set a label       |                                         |
+| VAR         | Ident_name          | Declare a variety |                                         |
+| PUSH        | Ident_name/Digit    | push(value1)      |                                         |
+| POP         | Address             | Ident_name        | \*value1 = value2                       |
+| JZ          | Label_name          |                   | Jump if stack top is zero               |
+| JNZ         | Label_name          |                   | Jump if stack top is not zero           |
+| JMP         | Label_name          |                   | Jump unconditionally                    |
+| MAIN        |                     |                   | Main function label                     |
+| FUNC        |                     |                   | Function label                          |
+| ENDFUNC     |                     |                   | End of function label                   |
+| PARA        | Ident_name          | Type              | Parameters                              |
+| RET         | Return value or not |                   | Function return                         |
+| CALL        | Function name       |                   | Function call                           |
+| RPARA       | Type                |                   | Get parameters ready for function call  |
+| GETINT      |                     |                   | Get a integer and put it into stack top |
+| PRINT       | String              | Para num          | Pop values and print.                   |
+| DIMVAR      | Ident_name          | Type              | Set dimension info for array variety    |
+| VALUE       | Ident_name          | Type              | Get the variety value                   |
+| ADDRESS     | Ident_name          | Type              | Get the variety address                 |
+| PLACEHOLDER |                     |                   | Push something to hold places           |
+| EXIT        |                     |                   | Exit                                    |
 
 | CodeType | Value1 | Value2 | Operation |
 | -------- | ------ | ------ | --------- |
 | ADD      |        |        | +         |
 | SUB      |        |        | -         |
-| MUL      |        |        | *         |
+| MUL      |        |        | \*        |
 | DIV      |        |        | /         |
 | MOD      |        |        | %         |
 | CMPEQ    |        |        | ==        |
@@ -1009,7 +1007,7 @@ private void analyseLAndExp(ArrayList<Word> exp, String from, String label) {
         if (...) {
             if (...) {
                 codes.add(new PCode(CodeType.JZ, label));
-            } 
+            }
           ...
         }
     }
@@ -1021,7 +1019,6 @@ By these means, short circuit calculation is solved.
 ## Summary
 
 ![[编译实验总结感想]]
-
 
 ## Reference
 

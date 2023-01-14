@@ -50,9 +50,9 @@ const BlogPostTemplate = ({
         <section
           className="
           prose md:prose-md lg:prose-lg
-          prose-img:rounded-xl
+          prose-img:rounded-xl prose-img:shadow-lg
           prose-a:text-blue-500 hover:prose-a:text-blue-400
-          prose-code:mockup-code
+          prose-code:bg-gray-500
           "
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"

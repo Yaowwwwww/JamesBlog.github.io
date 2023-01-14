@@ -96,9 +96,9 @@ Gatsby 比起直接用 hugo 这种博客生成器来说要自己做一些事情�
 
 ### markdown 页面生成&渲染
 
-这里直接使用了 [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) 
+这里直接使用了 [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)
 
-在post页面模板中进行渲染。
+在 post 页面模板中进行渲染。
 
 ```js
 <section
@@ -180,7 +180,7 @@ posts.forEach(post => {
 
 ### 深色模式
 
-在daisyUI配置好主题颜色，再设置切换按钮。
+在 daisyUI 配置好主题颜色，再设置切换按钮。
 
 ```js
 <input type="checkbox"
@@ -194,9 +194,10 @@ posts.forEach(post => {
 
 ### 链接问题
 
-之前在 hugo 上麻烦的内部链接在 Gatsby 上也意外的简单，直接用 markdown 的链接格式不要带 md 后缀就能够实现在 Obsidian 和 Gatsby 上都生效。
+~~之前在 hugo 上麻烦的内部链接在 Gatsby 上也意外的简单，直接用 markdown 的链接格式不要带 md 后缀就能够实现在 Obsidian 和 Gatsby 上都生效~~
+
+官方有一个内部链接截断插件[gatsby-plugin-catch-links](https://www.gatsbyjs.com/plugins/gatsby-plugin-catch-links)，但我没看明白他做了什么，在存在自定义 slug 的情况下，内部链接转换也会很麻烦，或许需要自己写一个转换的插件，放弃这个了。还是采用之前的obsidian双括号加一个slug `[[...]](/slug)`
 
 另外，页面上使用 Gatsby 自带的 Link 组件有预渲染的作用
 
 > The Gatsby `Link` component provides a performance feature called **preloading**. This means that the resources for the linked page are requested when the link scrolls into view or when the mouse hovers on it. That way, when the user actually clicks on the link, the new page can load super quickly.
-

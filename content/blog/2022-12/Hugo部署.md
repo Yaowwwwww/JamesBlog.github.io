@@ -3,13 +3,14 @@ title: "Hugo部署"
 date: 2022-12-15T15:31:38+08:00
 tags: []
 image: ""
+slug: 20221215153138
 ---
 
 ## 部署到 GitHub Pages
 
-(指从hugo仓库部署到xx.github.io仓库)
+(指从 hugo 仓库部署到 xx.github.io 仓库)
 
-在hugo仓库新建一个action
+在 hugo 仓库新建一个 action
 
 ```yaml
 name: Deploy Hugo site to Pages
@@ -35,10 +36,10 @@ jobs:
         uses: peaceiris/actions-hugo@v2.6.0
         with:
           hugo-version: 'latest'
-          
-      - name: Build 
+
+      - name: Build
         run: hugo
-        
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -50,18 +51,17 @@ jobs:
 
 其中，`external_repository`为你的`xxx.github.io`仓库地址，`publish_branch`为你的`xxx.github.io`仓库的分支。
 
-需要在Settings-Developer settings-Personal access tokens中生成一个token，权限选workflow，然后在hugo仓库Settings-Repository secrets中设置`PERSONAL_TOKEN`为刚才的token
+需要在 Settings-Developer settings-Personal access tokens 中生成一个 token，权限选 workflow，然后在 hugo 仓库 Settings-Repository secrets 中设置`PERSONAL_TOKEN`为刚才的 token
 
-## 部署到 Cloudflare Pages
+## 部署到 Cloudflare Pages / Vercel
 
-https://dash.cloudflare.com/
+- https://dash.cloudflare.com/
+- https://vercel.com/
 
-Pages-新建-连接到Git-选仓库-选hugo
+Pages-新建-连接到 Git-选仓库-选 hugo
 
 注意设置环境变量 `HUGO_VERSION = 0.105.0`
 
 默认版本太老了
 
-## 部署到 Vercel
 
-https://vercel.com/
