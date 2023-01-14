@@ -3,7 +3,7 @@ title: "Hugo部署"
 date: 2022-12-15T15:31:38+08:00
 tags: []
 image: ""
-slug: 20221215153138
+slug: "20221215153138"
 ---
 
 ## 部署到 GitHub Pages

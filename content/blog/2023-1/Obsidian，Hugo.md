@@ -4,7 +4,7 @@ date: 2023-01-04T18:07:41
 tags: [APP]
 categories: []
 image: "https://pic.mcac.cc/202301042234833.png"
-slug: 20230104180741
+slug: "20230104180741"
 ---
 
 上一篇相关文章: [[Obsidian体验与新工作流]](/obsidian1)

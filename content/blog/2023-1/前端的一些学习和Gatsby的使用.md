@@ -3,7 +3,7 @@ title: 前端的一些学习和 Gatsby 的使用
 date: 2023-01-14T01:32:16
 tags: []
 image: ""
-slug: 20230114013216
+slug: "20230114013216"
 ---
 
 ## 一些背景
@@ -201,3 +201,4 @@ posts.forEach(post => {
 另外，页面上使用 Gatsby 自带的 Link 组件有预渲染的作用
 
 > The Gatsby `Link` component provides a performance feature called **preloading**. This means that the resources for the linked page are requested when the link scrolls into view or when the mouse hovers on it. That way, when the user actually clicks on the link, the new page can load super quickly.
+
