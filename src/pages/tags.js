@@ -4,6 +4,8 @@ import { Link, graphql } from "gatsby";
 import Seo from "../components/seo";
 import Layout from "../components/layout";
 
+export const Head = () => <Seo title="Tags" />;
+
 const Tags = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes;
   const tagMap = new Map();
@@ -40,7 +42,6 @@ const Tags = ({ data, location }) => {
   );
 };
 
-export const Head = () => <Seo title="Tags" />;
 
 export default Tags;
 

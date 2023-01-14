@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
+export const Head = () => <Seo title="Archive" />;
 const Archive = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes;
   const timeMap = new Map();
@@ -53,7 +54,7 @@ const Archive = ({ data, location }) => {
   );
 };
 
-export const Head = () => <Seo title="Archive" />;
+
 export default Archive;
 
 export const pageQuery = graphql`

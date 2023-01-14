@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Card from "../components/card";
 
+export const Head = ({ pageContext }) => <Seo title={pageContext.targetTag} />;
 const BlogTagPostsTemplate = ({ location, data, pageContext }) => {
   const posts = data.allMarkdownRemark.nodes;
   return (
@@ -22,7 +23,6 @@ const BlogTagPostsTemplate = ({ location, data, pageContext }) => {
 
 export default BlogTagPostsTemplate;
 
-export const Head = () => <Seo title="Tag Posts" />;
 
 export const pageQuery = graphql`
   query BlogPostByTag($targetTag: String!) {
@@ -36,7 +36,7 @@ export const pageQuery = graphql`
     sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
-        excerpt(truncate: true)
+        excerpt(truncate: true, pruneLength: 80)
         fields {
           slug
         }
@@ -44,6 +44,7 @@ export const pageQuery = graphql`
           date(formatString: "YYYY-MM-DD")
           title
           tags
+          image
           slug
           tags
         }

@@ -4,6 +4,15 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
+export const Head = ({ data: { markdownRemark: post } }) => {
+  return (
+    <Seo
+      title={post.frontmatter.title}
+      description={post.excerpt}
+    />
+  );
+};
+
 const BlogPostTemplate = ({
                             data: { site, markdownRemark: post },
                             location
@@ -63,14 +72,6 @@ const BlogPostTemplate = ({
   );
 };
 
-export const Head = ({ data: { markdownRemark: post } }) => {
-  return (
-    <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
-    />
-  );
-};
 
 export default BlogPostTemplate;
 

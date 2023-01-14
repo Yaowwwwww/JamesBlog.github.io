@@ -6,6 +6,8 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Card from "../components/card";
 
+export const Head = () => <Seo title="Recent Posts" />;
+
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;
@@ -30,12 +32,6 @@ const BlogIndex = ({ data, location }) => {
 
 export default BlogIndex;
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Recent Posts" />;
 
 export const pageQuery = graphql`
   {
@@ -50,7 +46,7 @@ export const pageQuery = graphql`
         limit: 10
     ) {
       nodes {
-        excerpt
+        excerpt(truncate: true, pruneLength: 80)
         fields {
           slug
         }
