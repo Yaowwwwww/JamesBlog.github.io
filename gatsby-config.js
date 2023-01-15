@@ -9,8 +9,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `SOTO`,
-    description: `SOTO-BLOG: some stuff that might be interesting`,
+    title: `SOTO-BLOG`,
+    description: `SOTO-BLOG: Some stuff that might be interesting.`,
     siteUrl: `https://zzhgo.com/`,
     image: `https://pic.mcac.cc/202301012340641.jpg`
   },

@@ -23,8 +23,8 @@ const Seo = ({ description, title, image, children }) => {
     `
   );
 
-  const metaDescription = site.siteMetadata.description;
-  const defaultTitle = description || site.siteMetadata?.title;
+  const defaultTitle = site.siteMetadata?.title;
+  const metaDescription = description || site.siteMetadata.description;
   const metaImage = image || site.siteMetadata.image;
 
   return (
