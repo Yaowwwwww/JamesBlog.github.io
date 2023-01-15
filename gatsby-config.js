@@ -12,6 +12,7 @@ module.exports = {
     title: `SOTO`,
     description: `SOTO-BLOG: some stuff that might be interesting`,
     siteUrl: `https://zzhgo.com/`,
+    image: `https://pic.mcac.cc/202301012340641.jpg`,
   },
   plugins: [
     'gatsby-plugin-postcss',

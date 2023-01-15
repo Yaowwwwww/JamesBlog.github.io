@@ -9,6 +9,7 @@ export const Head = ({ data: { markdownRemark: post } }) => {
     <Seo
       title={post.frontmatter.title}
       description={post.excerpt}
+      image={post.frontmatter.image}
     />
   );
 };
