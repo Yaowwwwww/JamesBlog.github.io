@@ -5,17 +5,14 @@
 
 @layer base {
     html {
-        font-family: Futura, Proxima Nova, system-ui, sans-serif;
+        font-family: Helvetica, Tahoma, Arial, Futura, system-ui, sans-serif;
     }
 }
 
 .gatsby-highlight pre[class*="language-"] {
-    background: #202328;
+    background: #0E1017;
     border-radius: 8px;
     color: #fff;
-    line-height: 1.8em;
-    max-width: 100%;
-    overflow: auto;
     padding: 2rem 2rem;
     width: 100%;
 }

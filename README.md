@@ -31,3 +31,4 @@
 - [x] slug 格式
 - [x] ~~分页~~ 首页直接跳转 Archive
 - [x] 草稿 frontmatter draft
+- [x] SEO, Opengraph, Twitter Card
