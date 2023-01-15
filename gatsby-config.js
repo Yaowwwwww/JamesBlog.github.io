@@ -5,32 +5,32 @@
  */
 
 /**
- * @type {import('gatsby').GatsbyConfig}
+ * @type {import("gatsby").GatsbyConfig}
  */
 module.exports = {
   siteMetadata: {
     title: `SOTO`,
     description: `SOTO-BLOG: some stuff that might be interesting`,
     siteUrl: `https://zzhgo.com/`,
-    image: `https://pic.mcac.cc/202301012340641.jpg`,
+    image: `https://pic.mcac.cc/202301012340641.jpg`
   },
   plugins: [
-    'gatsby-plugin-postcss',
+    "gatsby-plugin-postcss",
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
-        ignore: [`**/Templates`],
-      },
+        ignore: [`**/Templates`]
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -40,18 +40,18 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
-            },
+              maxWidth: 630
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
-          `gatsby-remark-prismjs`,
-        ],
-      },
+          `gatsby-remark-prismjs`
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -78,11 +78,11 @@ module.exports = {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + (node.frontmatter.slug?node.frontmatter.slug:node.fields.slug),
-                  guid: site.siteMetadata.siteUrl + (node.frontmatter.slug?node.frontmatter.slug:node.fields.slug),
-                  custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                  url: site.siteMetadata.siteUrl + (node.frontmatter.slug ? (`/` + node.frontmatter.slug) : node.fields.slug),
+                  guid: site.siteMetadata.siteUrl + (node.frontmatter.slug ? (`/` + node.frontmatter.slug) : node.fields.slug),
+                  custom_elements: [{ "content:encoded": node.html }]
+                });
+              });
             },
             query: `{
               allMarkdownRemark(
@@ -104,10 +104,10 @@ module.exports = {
               }
             }`,
             output: "/rss.xml",
-            title: "SOTO-BLOG",
-          },
-        ],
-      },
+            title: "SOTO-BLOG"
+          }
+        ]
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -120,8 +120,8 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/android-chrome-512x512.png`, // This path is relative to the root of the site.
-      },
-    },
-  ],
-}
+        icon: `static/android-chrome-512x512.png` // This path is relative to the root of the site.
+      }
+    }
+  ]
+};
