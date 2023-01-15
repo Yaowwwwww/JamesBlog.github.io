@@ -15,7 +15,7 @@ const BlogTagPostsTemplate = ({ location, data, pageContext }) => {
       </h1>
       <hr className={"my-3"} />
       <ol className={"flex flex-col space-y-6"} style={{ listStyle: `none` }}>
-        {posts.map(post => <li><Card {...post} /></li>)}
+        {posts.map(post => <li key={post.fields.slug}><Card {...post} /></li>)}
       </ol>
     </Layout>
   );

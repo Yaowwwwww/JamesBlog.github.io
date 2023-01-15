@@ -1,7 +1,6 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
 
-import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Card from "../components/card";
@@ -14,7 +13,11 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
+      <p className={"text-gray-500 my-3"}>
+        Welcome! I’m Zhou Zihang. 🥳<br/>
+        This is a place where I share my life, thoughts, and other stuff that might be interesting.
+      </p>
+      <div className="divider"></div>
       <ol className={"flex flex-col space-y-6"} style={{ listStyle: `none` }}>
         {posts.map(post => {
           return (

@@ -27,11 +27,16 @@ const BlogPostTemplate = ({
       >
         <header>
           <h1 className={"text-4xl font-bold my-3"} itemProp="headline">{post.frontmatter.title}</h1>
-          <p className={"text-md text-gray-500 my-3"}>
-            <span className={"mx-2"}>{post.frontmatter.date}</span>
+          <p className={"flex flex-row mt-3 space-x-3"}>
+          <span className={"text-sm text-base-content/80"}>
+            {post.frontmatter.date}
+          </span>
             {post.frontmatter.tags ? (
               post.frontmatter.tags.map(tag => (
-                <Link className={"btn btn-ghost btn-sm mx-1"} to={`/tags/${tag}`}>
+                <Link
+                  className={"text-sm text-base-content/80 bg-base-content/10 rounded-md px-3 hover:bg-base-content/20"}
+                  to={`/tags/${tag}`}
+                >
                   {tag}
                 </Link>
               ))
@@ -47,7 +52,7 @@ const BlogPostTemplate = ({
               </div>
               <div className="collapse-content">
                 <div
-                  className=" prose md:prose-lg lg:prose-xl"
+                  className="prose hover:prose-a:text-blue-300"
                   dangerouslySetInnerHTML={{
                     __html: post.tableOfContents
                   }}
@@ -60,8 +65,7 @@ const BlogPostTemplate = ({
           className="
           prose md:prose-md lg:prose-lg
           prose-img:rounded-xl prose-img:shadow-lg
-          prose-a:text-blue-500 hover:prose-a:text-blue-400
-          prose-code:bg-gray-500
+          prose-a:text-blue-400 hover:prose-a:text-blue-300
           "
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"

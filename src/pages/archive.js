@@ -24,9 +24,6 @@ const Archive = ({ data, location }) => {
 
   return (
     <Layout location={location}>
-      <h1 className={"text-3xl font-bold my-3"}>
-        Archives
-      </h1>
       {Array.from(timeMap.keys()).map(year => {
         return (
           <div className="flex flex-col w-full border-opacity-50">

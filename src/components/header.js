@@ -5,7 +5,7 @@ import ThemeToggle from "./themeToggle";
 
 const Header = () => (
   <div className="navbar p-4 lg:w-3/4 mx-auto bg-base-100">
-    <div className="flex-1 space-x-3">
+    <div className="flex-1 space-x-2">
       <Link className="btn btn-ghost normal-case space-x-3" to={"/"}>
         <StaticImage
           className={"rounded-md"}

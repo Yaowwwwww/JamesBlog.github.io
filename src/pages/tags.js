@@ -24,10 +24,7 @@ const Tags = ({ data, location }) => {
   tagPair.sort((left, right) => right[1] - left[1]);
   return (
     <Layout location={location} title={"SOTO | Tags"}>
-      <h1 className={"text-3xl font-bold my-3"}>
-        Tags
-      </h1>
-      <hr className={"my-3"}/>
+      <div className="divider"></div>
       <div className="flex flex-wrap gap-4">
         {tagPair.map(([tag, count]) => {
           return (
