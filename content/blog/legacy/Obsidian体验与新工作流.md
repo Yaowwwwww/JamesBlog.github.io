@@ -1,7 +1,7 @@
 ---
 title: Obsidian体验与新工作流
 date: 2021-12-07 12:11:00
-tags: [APP]
+tags: [APP,Obsidian]
 image: https://pic.mcac.cc/soto-pictures/2021-12/XmECh3.png
 slug: obsidian1
 ---

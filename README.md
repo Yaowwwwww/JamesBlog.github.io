@@ -3,10 +3,8 @@
 </h1>
 <p align="center">
     Based on Gatsby<br/>
-    A personal blog project when learning front end (html, css, javascript, reactjs)
+    a personal blog project
 </p>
-
-
 
 ## Based On
 
@@ -32,3 +30,6 @@
 - [x] ~~分页~~ 首页直接跳转 Archive
 - [x] 草稿 frontmatter draft
 - [x] SEO, Opengraph, Twitter Card
+- [x] Library 页面
+  - [x] 读取 Json 数据库
+  - [x] 页面样式

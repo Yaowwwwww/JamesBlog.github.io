@@ -1,7 +1,7 @@
 ---
 title: "Hugo部署"
 date: 2022-12-15T15:31:38+08:00
-tags: []
+tags: [APP,Hugo]
 image: ""
 slug: "20221215153138"
 ---
