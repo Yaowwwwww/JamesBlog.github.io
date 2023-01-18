@@ -17,7 +17,7 @@ const Library = ({ location }) => {
   return (
     <Layout location={location}>
       <div className="divider"></div>
-      <ol className="w-full grid grid-cols-2 gap-5 mt-10">
+      <ol className="w-full grid lg:grid-cols-2 sm:grid-cols-1 gap-5 mt-10">
         {nodes.map((node, index) => {
           if (node.status === "done") {
             const type = node.type;
