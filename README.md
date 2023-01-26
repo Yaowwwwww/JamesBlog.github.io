@@ -1,8 +1,9 @@
 <h1 align="center">
-  SOTO-BLOG
+  SOTO-BLOG(legacy)
 </h1>
 <p align="center">
     Based on Gatsby<br/>
+    <b>NOW MOVED TO <a href="https://github.com/acsoto/soto-blog-nextjs">NextJS</a></b><br/>
     a personal blog project
 </p>
 
